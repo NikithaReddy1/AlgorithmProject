@@ -1,13 +1,24 @@
 #include <iostream>
+#include <cmath>
 #include "MedianOfMedians.h"
+#include "Partition.h"
+#include "Display.h"
+#include "RandomSelectAlgo.h"
+
 using namespace std;
 
 int main()
 {
-    vector<int> array = {1};
+    vector<int> array = {1, 4 ,3};
     MedianOfMedians m;
     cout<<"Median: "<<m.median_Of_Medians(array, 0, array.size()-1, 2)<<endl;
-
-
+    Partition p;
+    Display d;
+    d.display(array, 0, array.size()-1);
+    p.randomised_partition(array, 0, array.size()-1);
+    d.display(array, 0, array.size()-1);
+    cout<<10/2<<endl;
+    RandomSelectAlgo r;
+    cout<<"Median: "<<r.randomised_Select(array, 0, array.size()-1, 1);
     return 0;
 }
