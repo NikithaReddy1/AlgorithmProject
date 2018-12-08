@@ -131,20 +131,6 @@ int select_Algo(vector<int> array, int start, int end, int index_To_Find){
 }
 
 /*******************************************************************************
-	modified partition function for QuickSort using median as pivot
-*******************************************************************************/
-int modified_Partition_Quick(vector<int>& array, int start, int end){
-    int median = median_Of_Medians(array, start, end, 6);
-	//block of code to find the index of the median
-	int index;
-	for(int i = start; i <= end; i++)
-		if(array[i] == median)
-		    index = i;
-	swap(array[end], array[index]);
-	return partition(array, start, end);
-}
-
-/*******************************************************************************
    Function to generate random element
 *******************************************************************************/
 int randomElement(int start, int end){
@@ -211,6 +197,21 @@ void Normal_QuickSort(vector<int>& array,int start,int end){
 		Normal_QuickSort(array, pivot_Index+1, end);
     }
 }
+/*******************************************************************************
+	modified partition function for QuickSort using median as pivot
+*******************************************************************************/
+int modified_Partition_Quick(vector<int>& array, int start, int end){
+    //int median = median_Of_Medians(array, start, end, 6);
+   // int median = select_Algo(array, start, end, (end - start + 1) / 2);
+    int median = randomised_Select(array, start, end, (end - start + 1) / 2);
+	//block of code to find the index of the median
+	int index;
+	for(int i = start; i <= end; i++)
+		if(array[i] == median)
+		    index = i;
+	swap(array[end], array[index]);
+	return partition(array, start, end);
+}
 
 /*******************************************************************************
 	QuickSort function using median as pivot
@@ -218,6 +219,8 @@ void Normal_QuickSort(vector<int>& array,int start,int end){
 void quickSort_Median_As_Pivot(vector<int>& array, int start, int end){
     if(start < end){
 		int pivot_Index = modified_Partition_Quick(array, start, end);
+
+		//int pivot_Index = select_Algo(array, start, end, (end - start + 1)/2);
 		quickSort_Median_As_Pivot(array, start , pivot_Index-1);
 		quickSort_Median_As_Pivot(array, pivot_Index+1, end);
     }
