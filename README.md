@@ -1,8 +1,8 @@
-# AlgorithmProject
+# AlgorithmProject(CS 5329 – Programming Project – Group 1)
 Median finding, Order Statistics and Quick Sort
 
 Overview:
-   The purpose of the project is to compare the performance of QuickSort Algorithm, by using various pivot supply stragies.
+   The purpose of the project is to compare the performance of QuickSort Algorithm, by using various pivot supply strategies.
    
 Implementation:
    1. Finished Iterative version of Median Of Medians.
